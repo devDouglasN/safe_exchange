@@ -5,18 +5,18 @@ import java.time.LocalDate;
 
 public class Pedido {
 	
-	private String nomeProduct;
+	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
 	private String urlProduto;
 	private String urlImagem;
 	private String descricao;
 	
-	public String getNomeProduct() {
-		return nomeProduct;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
-	public void setNomeProduct(String nomeProduct) {
-		this.nomeProduct = nomeProduct;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 	public BigDecimal getValorNegociado() {
 		return valorNegociado;
