@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="container">
+			<div class="jumbotron mb-0">
+				<h1 class="display-4">Novo Pedido</h1>
+			</div>
+			
+			<form action="/pedido/novo" method="POST">
+				<div>
+					<label for="nomeProduto">Produto</label>
+					<input name="nameProduto" placeholder="nome do produto"/>
+					<small>Informa o nome do produto.</small>
+				</div>
+				<div>
+					<label for="urlProduto">Url</label>
+					<input name="urlProduto" placeholder="url do produto"/>
+					<small>Por favor, busque o produto desejado em um site de sua preferência e compartilhe o URL da página aqui.</small>
+				</div>
+				<div>
+					<label for="urlImagem">Imagem</label>
+					<input name="urlImagem"  placeholder="url da imagem"/>
+					<small>Por favor, copie a URL de uma imagem de alta qualidade do produto e compartilhe aqui para auxiliar na atração de potenciais compradores.</small>
+				</div>
+				<div>
+					<label for="descricao">Descricao</label>
+					<textarea name="descricao"  placeholder="Adicione detelhes importantes para ajudar o comprador"></textarea>
+				</div>
+				<button type="submit">Cadastrar</button>
+			</form>
+			
+		</div>
+	</body>
+</html>
