@@ -1,14 +1,22 @@
 package br.com.maquiny.mvc.mudi.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.maquiny.mvc.mudi.model.Pedido;
+
 
 public class RequisicaoNovoPedido {
 	
+	@NotBlank
 	private String nomeProduto;
+	
+	@NotBlank
 	private String urlProduto;
+	
+	@NotBlank
 	private String urlImagem;
 	private String descricao;
-	
+		
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
