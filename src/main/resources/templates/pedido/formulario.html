@@ -12,22 +12,31 @@
 				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
 					<div class="form-group">
 						<label for="nomeProduto">Produto</label>
-						<input th:field="*{nomeProduto}" class="form-control" placeholder="nome do produto"/>
-						<small>Informa o nome do produto.</small>
+						<input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="nome do produto"/>
+						<small>Informa o nome d o produto .</small>
+						<div class="invalid-feedback" th:errors="*{nomeProduto}">
+							Erros dos nomes dos produtos
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="urlProduto">Url</label>
-						<input th:field="*{urlProduto}" class="form-control" placeholder="url do produto"/>
+						<input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="url do produto"/>
 						<small>Por favor, busque o produto desejado em um site de sua preferência e compartilhe o URL da página aqui.</small>
+						<div class="invalid-feedback" th:errors="*{urlProduto}">
+							Erros da url dos produtos
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="urlImagem">Imagem</label>
-						<input th:field="*{urlImagem}" class="form-control" placeholder="url da imagem"/>
+						<input th:field="*{urlImagem}" th:errorclass="is-invalid" class="form-control" placeholder="url da imagem"/>
 						<small>Por favor, copie a URL de uma imagem de alta qualidade do produto e compartilhe aqui para auxiliar na atração de potenciais compradores.</small>
+						<div class="invalid-feedback" th:errors="*{urlImagem}">
+							Erros da url da imagem
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="descricao">Descricao</label>
-						<textarea class="form-control" name="descricao"  placeholder="Adicione detelhes importantes para ajudar o comprador"></textarea>
+						<textarea th:field="*{descricao}" class="form-control" placeholder="Adicione detelhes importantes para ajudar o comprador"></textarea>
 					</div>
 					<button class="btn btn-primary" type="submit">Cadastrar</button>
 				</form>

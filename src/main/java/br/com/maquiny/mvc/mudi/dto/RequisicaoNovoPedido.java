@@ -7,7 +7,7 @@ import br.com.maquiny.mvc.mudi.model.Pedido;
 
 public class RequisicaoNovoPedido {
 	
-	@NotBlank
+	@NotBlank//NotBlank.RequisicaoNovoPedido.nomeProduto=nao pode estar em branco
 	private String nomeProduto;
 	
 	@NotBlank
