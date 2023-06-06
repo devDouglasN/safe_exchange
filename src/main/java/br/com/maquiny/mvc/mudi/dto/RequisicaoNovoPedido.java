@@ -3,6 +3,7 @@ package br.com.maquiny.mvc.mudi.dto;
 import javax.validation.constraints.NotBlank;
 
 import br.com.maquiny.mvc.mudi.model.Pedido;
+import br.com.maquiny.mvc.mudi.model.StatusPedido;
 
 
 public class RequisicaoNovoPedido {
@@ -46,8 +47,9 @@ public class RequisicaoNovoPedido {
 		Pedido pedido = new Pedido();
 		pedido.setDescricao(descricao);
 		pedido.setNomeProduto(nomeProduto);
-		pedido.setUrlImagem(urlImagem);
 		pedido.setUrlProduto(urlProduto);
+		pedido.setUrlImagem(urlImagem);
+		pedido.setStatus(StatusPedido.AGUARDANDO);
 		return pedido;
 	}
 }

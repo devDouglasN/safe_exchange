@@ -2,10 +2,10 @@
 	<head th:replace="~{base :: head}"></head>
 	<body>
 		<div th:replace="~{base :: logo}"></div>
-		</div>
+	
 		<div class="container">
-		<div class="container">
-		<div th:replace="~{base :: título('Novo Pedido')}"></div>
+		<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+		
 			<div class="card mt-3">
 				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
 					<div class="form-group">
@@ -22,6 +22,7 @@
 						<small>Por favor, busque o produto desejado em um site de sua preferência e compartilhe o URL da página aqui.</small>
 						<div class="invalid-feedback" th:errors="*{urlProduto}">
 							Erros da url dos produtos
+							
 						</div>
 					</div>
 					<div class="form-group">
