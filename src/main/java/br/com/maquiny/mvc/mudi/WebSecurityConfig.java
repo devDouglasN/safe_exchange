@@ -29,7 +29,8 @@ public class WebSecurityConfig {
 	    	.formLogin(form -> form
 	    			.loginPage("/login")
 	    			.permitAll()
-	    		);
+	    		)
+	    	.logout(logout -> logout.logoutUrl("/logout"));     
 	    return http.build();
 	}
 	 
@@ -37,7 +38,7 @@ public class WebSecurityConfig {
 	public UserDetailsService userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
 	    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 	    manager.createUser(User.withUsername("douglas")
-	        .password(bCryptPasswordEncoder.encode(""))
+	        .password(bCryptPasswordEncoder.encode("1"))
 	        .roles("ADM")
 	        .build());
 	
