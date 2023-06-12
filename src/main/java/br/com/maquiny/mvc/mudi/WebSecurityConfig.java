@@ -41,12 +41,5 @@ public class WebSecurityConfig {
                 .authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
                 .passwordEncoder(encoder);
         
-        // Criando usuário e senha no bando de dados
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(encoder)
-                .withUser("douglas")
-                .password(encoder.encode("123"))
-                .roles("ADM");
     }
 }
