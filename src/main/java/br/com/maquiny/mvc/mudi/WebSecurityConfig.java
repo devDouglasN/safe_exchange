@@ -20,17 +20,23 @@ public class WebSecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	    http
 	        .authorizeRequests((authz) -> authz
+	            .requestMatchers("/home/**").permitAll()
 	            .anyRequest().authenticated()
 	        )
-	    	.formLogin(form -> form
-	    			.loginPage("/login")
-	    			.defaultSuccessUrl("/usuario/pedido", true)
-	    			.permitAll()
-	    		)
-	    	.logout(logout -> logout.logoutUrl("/logout"))   
-	    	.csrf().disable();
+	        .formLogin(form -> form
+	            .loginPage("/login")
+	            .defaultSuccessUrl("/usuario/pedido", true)
+	            .permitAll()
+	        )
+	        .logout(logout -> {
+	        	logout.logoutUrl("/logout")
+	        		.logoutSuccessUrl("/home");
+	        })   
+	        .csrf().disable();
+	    
 	    return http.build();
 	}
+
 	
 	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
