@@ -40,45 +40,17 @@
 				var app = new Vue({
 					el : '#ofertas',
 					data : {
-						pedidos : [
-							  {
-								    "id": 119,
-								    "nomeProduto": "Tênis Olympikus Venus 2",
-								    "valorNegociado": 199.00,
-								    "dataDaEntrega": "2023-06-12",
-								    "urlProduto": "https://www.netshoes.com.br/tenis-olympikus-venus-2-feminino-preto-2I2-4305-006",
-								    "urlImagem": "https://static.netshoes.com.br/produtos/tenis-olympikus-venus-2-feminino/06/2I2-4305-006/2I2-4305-006_zoom1.jpg?ts=1680122607&ims=544x",
-								    "descricao": "",
-								    "status": "AGUARDANDO",
-								    "user": null
-								  },
-								  {
-								    "id": 118,
-								    "nomeProduto": "Tênis Adidas Duramo",
-								    "valorNegociado": 219.00,
-								    "dataDaEntrega": "2023-06-10",
-								    "urlProduto": "https://www.netshoes.com.br/tenis-adidas-duramo-20-masculino-chumbo-3ZP-5591-040",
-								    "urlImagem": "https://static.netshoes.com.br/produtos/tenis-adidas-duramo-20-masculino/40/3ZP-5591-040/3ZP-5591-040_zoom1.jpg?ts=1646672740&ims=544x",
-								    "descricao": "",
-								    "status": "AGUARDANDO",
-								    "user": null
-								  },
-								  {
-								    "id": 116,
-								    "nomeProduto": "Smart TV Samsung 43 Polegadas",
-								    "valorNegociado": 2299.00,
-								    "dataDaEntrega": "2023-06-15",
-								    "urlProduto": "https://www.kabum.com.br/produto/113905/smart-tv-samsung-43-polegadas-led-full-hd-2-hdmi-1-usb-wi-fi-hdr-un43t5300agxzd?gclid=Cj0KCQjwj_ajBhCqARIsAA37s0w7x-o4zFVz5tNp3GqBIof4wYA35Kbww9fGxXYyWIc4ekMx8acF2nwaAmrrEALw_wcB",
-								    "urlImagem": "https://images.kabum.com.br/produtos/fotos/113905/smart-tv-led-43-full-hd-samsung-2-hdmi-1-usb-wi-fi-hdr-un43t5300agxzd_1591363813_gg.jpg",
-								    "descricao": "",
-								    "status": "AGUARDANDO",
-								    "user": null
-								}
-								]
+						pedidos : []
+					},
+					mounted () {
+						axios
+					      .get('http://localhost:8080/api/pedidos/aguardando')
+					      .then(response => (this.pedidos = response.data))
 					}
 				});
 			}
 				</script>
 	  	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	  	<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 	</body>
 </html>
