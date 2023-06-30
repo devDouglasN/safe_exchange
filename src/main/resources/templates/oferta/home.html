@@ -1,38 +1,84 @@
 <html>
 	<head th:replace="~{base :: head}"></head>
-	<body>
+	<body onload="onLoad()">
 		<div th:replace="~{base :: logo}"></div>
 	
-		<div class="container">
+		<div class="container" id="ofertas">
 		<div th:replace="~{base :: titulo('Últimos Pedidos')}"></div>
 		
-			<div class="card mb-3" th:each="pedido : ${pedidos}">
-				<div class="card-header alert-secondary" th:text="${pedido.nomeProduto}">Nome do produto</div>
+			<div class="card mb-3" v-for="pedido in pedidos">
+				<div class="card-header alert-secondary">{{pedido.nomeProduto}}</div>
 				<div class="card-body">
 				
 					<div class="row">
 						<div class="col-12 col-sm-8 mb-3">
 							<div class="row">
-								<div class="col-md-5">Valor: <span th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.ValorNegociado,3,'POINT',2,'COMMA')}">149,99</span> </div>
-								<div class="col-md-7">Data da entrega: <span th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">12/05/2023</span></div>
+								<div class="col-md-5">Valor: <input /></div> 
+								<div class="col-md-7">Data da entrega: <input /></div>
 							</div>
 					
 							<div>Produto</div>
-							<div> <input class="form-control" th:value="${pedido.urlProduto}" value="url do produto"/></div>
+							<div> <a v-bind:href="pedido.urlProduto">{{pedido.nomeProduto}}</a></div>
 					
 							<div>Descrição</div>
 							<div>
-								<textarea class="form-control" th:text="${pedido.descricao}">descrição do pedido</textarea>
+								<textarea class="form-control">{{pedido.descricao}}</textarea>
 							</div>
 						</div>
 						<div class="col-12 col-sm-4">
 							<div>
-								<img class="img-thumbnail" th:src="${pedido.urlImagem}" src=""/>
+								<img class="img-thumbnail" v-bind:src="pedido.urlImagem"/>
 					 		</div>
 				   		</div>
 				   	</div>
 				</div>
 	  		</div>
 	  	</div>
+	  	<script>
+			function onLoad() {
+				ofertas
+				var app = new Vue({
+					el : '#ofertas',
+					data : {
+						pedidos : [
+							  {
+								    "id": 119,
+								    "nomeProduto": "Tênis Olympikus Venus 2",
+								    "valorNegociado": 199.00,
+								    "dataDaEntrega": "2023-06-12",
+								    "urlProduto": "https://www.netshoes.com.br/tenis-olympikus-venus-2-feminino-preto-2I2-4305-006",
+								    "urlImagem": "https://static.netshoes.com.br/produtos/tenis-olympikus-venus-2-feminino/06/2I2-4305-006/2I2-4305-006_zoom1.jpg?ts=1680122607&ims=544x",
+								    "descricao": "",
+								    "status": "AGUARDANDO",
+								    "user": null
+								  },
+								  {
+								    "id": 118,
+								    "nomeProduto": "Tênis Adidas Duramo",
+								    "valorNegociado": 219.00,
+								    "dataDaEntrega": "2023-06-10",
+								    "urlProduto": "https://www.netshoes.com.br/tenis-adidas-duramo-20-masculino-chumbo-3ZP-5591-040",
+								    "urlImagem": "https://static.netshoes.com.br/produtos/tenis-adidas-duramo-20-masculino/40/3ZP-5591-040/3ZP-5591-040_zoom1.jpg?ts=1646672740&ims=544x",
+								    "descricao": "",
+								    "status": "AGUARDANDO",
+								    "user": null
+								  },
+								  {
+								    "id": 116,
+								    "nomeProduto": "Smart TV Samsung 43 Polegadas",
+								    "valorNegociado": 2299.00,
+								    "dataDaEntrega": "2023-06-15",
+								    "urlProduto": "https://www.kabum.com.br/produto/113905/smart-tv-samsung-43-polegadas-led-full-hd-2-hdmi-1-usb-wi-fi-hdr-un43t5300agxzd?gclid=Cj0KCQjwj_ajBhCqARIsAA37s0w7x-o4zFVz5tNp3GqBIof4wYA35Kbww9fGxXYyWIc4ekMx8acF2nwaAmrrEALw_wcB",
+								    "urlImagem": "https://images.kabum.com.br/produtos/fotos/113905/smart-tv-led-43-full-hd-samsung-2-hdmi-1-usb-wi-fi-hdr-un43t5300agxzd_1591363813_gg.jpg",
+								    "descricao": "",
+								    "status": "AGUARDANDO",
+								    "user": null
+								}
+								]
+					}
+				});
+			}
+				</script>
+	  	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</body>
 </html>

@@ -21,7 +21,7 @@ public class WebSecurityConfig {
 	    http
 	        .authorizeRequests((authz) -> authz
 	            .requestMatchers("/home/**").permitAll()
-	            .anyRequest().authenticated()
+	            .anyRequest().permitAll()
 	        )
 	        .formLogin(form -> form
 	            .loginPage("/login")
