@@ -51,11 +51,18 @@ public class RequisicaoNovaOferta {
 	}
 	
 	public Oferta toOferta() {
-		Oferta oferta = new Oferta();
-		oferta.setComentario(this.comentario);
-		oferta.setDataDaEntrega(LocalDate.parse(this.dataDaEntrega, formatter));
-		oferta.setValor(new BigDecimal(this.valor));
-		return oferta;
+	    Oferta oferta = new Oferta();
+	    oferta.setComentario(this.comentario);
+	    
+	    if (this.dataDaEntrega != null && !this.dataDaEntrega.isEmpty()) {
+	        oferta.setDataDaEntrega(LocalDate.parse(this.dataDaEntrega, formatter));
+	    }
+	    
+	    if (this.valor != null && !this.valor.isEmpty()) {
+	        oferta.setValor(new BigDecimal(this.valor));
+	    }
+	    
+	    return oferta;
 	}
 	
 }
