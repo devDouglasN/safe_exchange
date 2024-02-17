@@ -30,6 +30,7 @@ public class Pedido {
 	
 	@Column(length = 1000)
 	private String urlProduto;
+	
 	private String urlImagem;
 	private String descricao;
 	
@@ -38,6 +39,7 @@ public class Pedido {
 	private StatusPedido status;
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private User user;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
