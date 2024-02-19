@@ -12,5 +12,4 @@ public class OfertaController {
 	public String getFormularioParaOfertas() {
 		return "oferta/home";
 	}
-	
 }
