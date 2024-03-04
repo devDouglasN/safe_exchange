@@ -1,4 +1,4 @@
-package br.com.maquiny.mvc.mudi.controller;
+ package br.com.maquiny.mvc.mudi.controller;
 
 import java.security.Principal;
 import java.util.List;

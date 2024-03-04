@@ -10,43 +10,36 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 public class WebSecurityConfig {
-	
+
 	@Autowired
-    private DataSource dataSource;
-	
+	private DataSource dataSource;
+
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http
-	        .authorizeRequests((authz) -> authz
-	            .requestMatchers("/home/**").permitAll()
-	            .anyRequest().permitAll()
-	        )
-	        .formLogin(form -> form
-	            .loginPage("/login")
-	            .defaultSuccessUrl("/usuario/pedido", true)
-	            .permitAll()
-	        )
-	        .logout(logout -> {
-	        	logout.logoutUrl("/logout")
-	        		.logoutSuccessUrl("/home");
-	        })   
-	        .csrf().disable();
-	    
-	    return http.build();
+		http.authorizeRequests((authz) -> authz.requestMatchers("/home/**")
+				.permitAll().
+				anyRequest().permitAll())
+				.formLogin(form -> form.
+						loginPage("/login")
+						.defaultSuccessUrl("/usuario/pedido", true).permitAll())
+				.logout(logout -> {
+					logout.logoutUrl("/logout").logoutSuccessUrl("/home");
+				}).csrf().disable();
+
+		return http.build();
 	}
 
-	
 	@Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?")
-                .authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
-                .passwordEncoder(encoder);
-        
-    }
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		auth.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?")
+				.authoritiesByUsernameQuery("SELECT username, authority FROM authorities WHERE username = ?")
+				.passwordEncoder(encoder);
+
+	}
 }
